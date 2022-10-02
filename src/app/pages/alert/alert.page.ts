@@ -135,4 +135,45 @@ export class AlertPage implements OnInit {
 
     await alert.present();
   }
+
+  async presentAlertRadio() {
+    const alert = await this.alertController.create({
+      header: 'Select your favorite color',
+      inputs: [
+        {
+          label: 'Red',
+          type: 'radio',
+          value: 'red',
+        },
+        {
+          label: 'Blue',
+          type: 'radio',
+          value: 'blue',
+        },
+        {
+          label: 'Green',
+          type: 'radio',
+          value: 'green',
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            console.log('Confirm Cancel');
+          },
+        },
+        {
+          text: 'Ok',
+          handler: (data: any) => {
+            console.log(data);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+  }
 }
